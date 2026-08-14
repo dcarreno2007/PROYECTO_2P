@@ -2,7 +2,7 @@ package com.example.proyecto2p.modelo;
 
 public class Partido {
 
-    private int idPartido;
+    private String idPartido;
     private String fecha;
     private String hora;
     private String estadio;
@@ -14,7 +14,7 @@ public class Partido {
     /***
      * Constructor de la clase Partido
      */
-    public Partido(int idPartido, String fecha, String hora,
+    public Partido(String idPartido, String fecha, String hora,
                    String estadio, String seleccion1,
                    String seleccion2, FaseTorneo fase,
                    EstadoPartido estado) {
@@ -32,11 +32,11 @@ public class Partido {
      * Getters y Setters de los atributos de la clase Partido
      */
 
-    public int getIdPartido() {
+    public String getIdPartido() {
         return idPartido;
     }
 
-    public void setIdPartido(int idPartido) {
+    public void setIdPartido(String idPartido) {
         this.idPartido = idPartido;
     }
 

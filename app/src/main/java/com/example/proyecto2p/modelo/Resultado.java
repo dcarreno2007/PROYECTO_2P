@@ -12,7 +12,7 @@ import java.io.Serializable;
  * los puntos obtenidos por cada participante.</p>
  */
 
-public class Resultado {
+public class Resultado implements Serializable{
     private String idResultado;
     private String idPartido;
     private int golesSeleccion1;

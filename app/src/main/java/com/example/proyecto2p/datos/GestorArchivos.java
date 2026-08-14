@@ -33,7 +33,7 @@ public class GestorArchivos {
         this.context = context;
     }
 
-    // ================= USUARIOS (combinados) =================
+    // ================= Usuarios (combinados) =================
 
     /**
      * Carga todos los usuarios del sistema (participantes + administradores)
@@ -46,7 +46,7 @@ public class GestorArchivos {
         return usuarios;
     }
 
-    // ================= PARTICIPANTES =================
+    // ================= Participantes =================
 
     /**
      * Formato esperado de participantes.txt:
@@ -108,7 +108,7 @@ public class GestorArchivos {
         }
     }
 
-    // ================= ADMINISTRADORES =================
+    // ================= Administradores =================
 
     /**
      * Formato esperado de administradores.txt:
@@ -171,7 +171,7 @@ public class GestorArchivos {
 
                 String[] datos = linea.split("\\|");
 
-                int idPartido = Integer.parseInt(datos[0]);
+                String idPartido = datos[0];
                 String fecha = datos[1];
                 String hora = datos[2];
                 String estadio = datos[3];
@@ -212,7 +212,7 @@ public class GestorArchivos {
         }
     }
 
-    // ================= RESULTADOS =================
+    // ================= Resultados =================
 
     /**
      * Formato esperado de resultados.txt:
@@ -268,12 +268,11 @@ public class GestorArchivos {
         }
     }
 
-    // ================= PRONOSTICOS =================
+    // ================= PRONÓSTICOS =================
 
     /**
      * Formato esperado de pronosticos.txt:
-     * idPronostico|idUsuario|idPartido|golesSeleccion1|golesSeleccion2|puntosObtenidos
-     *
+     * idPronostico|idUsuario|idPartido|golesSeleccion1|golesSeleccion2|puntosObtenidos|fase
      * Filtra solo los pronósticos del usuario y fase indicados.
      */
     public List<Pronostico> cargarPronosticos(String idUsuario, FaseTorneo fase) {
@@ -299,8 +298,9 @@ public class GestorArchivos {
                 int golesSeleccion1 = Integer.parseInt(datos[3]);
                 int golesSeleccion2 = Integer.parseInt(datos[4]);
                 int puntosObtenidos = Integer.parseInt(datos[5]);
+                FaseTorneo faseLinea = FaseTorneo.valueOf(datos[6]);
 
-                if (idUsuarioLinea.equals(idUsuario)) {
+                if (idUsuarioLinea.equals(idUsuario) && faseLinea == fase) {
                     Pronostico pr = new Pronostico(idPronostico, idUsuarioLinea, idPartido, golesSeleccion1, golesSeleccion2);
                     pr.setPuntosObtenidos(puntosObtenidos);
                     lista.add(pr);
@@ -314,10 +314,10 @@ public class GestorArchivos {
         return lista;
     }
 
-    public void guardarPronosticos(List<Pronostico> pronosticos, int idUsuario, FaseTorneo fase) {
+    public void guardarPronosticos(List<Pronostico> pronosticos, String idUsuario, FaseTorneo fase) {
         try (FileWriter writer = new FileWriter(context.getFilesDir() + "/pronosticos.txt")) {
 
-            writer.write("idPronostico|idUsuario|idPartido|golesSeleccion1|golesSeleccion2|puntosObtenidos\n");
+            writer.write("idPronostico|idUsuario|idPartido|golesSeleccion1|golesSeleccion2|puntosObtenidos|fase\n");
 
             for (Pronostico p : pronosticos) {
                 writer.write(p.getIdPronostico() + "|" +
@@ -325,7 +325,8 @@ public class GestorArchivos {
                         p.getIdPartido() + "|" +
                         p.getGolesSeleccion1() + "|" +
                         p.getGolesSeleccion2() + "|" +
-                        p.getPuntosObtenidos() + "\n");
+                        p.getPuntosObtenidos() + "|" +
+                        fase + "\n");
             }
 
         } catch (IOException e) {

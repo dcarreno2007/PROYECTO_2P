@@ -1,8 +1,8 @@
 package com.example.proyecto2p.modelo;
 
 /***
- * Representa el pronostico que un participante realiza sobre el resultado
- * de un partido especifico del torneo.
+ * Representa el pronóstico que un participante realiza sobre el resultado
+ * de un partido específico del torneo.
  */
 public class Pronostico {
 
@@ -66,18 +66,14 @@ public class Pronostico {
      * @return los puntos obtenidos por este pronóstico
      */
     public int calcularPuntos(Resultado resultadoOficial) {
-        if (resultadoOficial == null
-                || resultadoOficial.getIdPartido() == null
-                || !resultadoOficial.getIdPartido().equals(this.idPartido)) {
-            this.puntosObtenidos = 0;
+        if (resultadoOficial == null || !resultadoOficial.getIdPartido().equals(this.idPartido)) {            this.puntosObtenidos = 0;
             return this.puntosObtenidos;
         }
 
         int golesRealesSeleccion1 = resultadoOficial.getGolesSeleccion1();
         int golesRealesSeleccion2 = resultadoOficial.getGolesSeleccion2();
 
-        boolean marcadorExacto = (this.golesSeleccion1 == golesRealesSeleccion1)
-                && (this.golesSeleccion2 == golesRealesSeleccion2);
+        boolean marcadorExacto = (this.golesSeleccion1 == golesRealesSeleccion1) && (this.golesSeleccion2 == golesRealesSeleccion2);
 
         if (marcadorExacto) {
             this.puntosObtenidos = 3;
