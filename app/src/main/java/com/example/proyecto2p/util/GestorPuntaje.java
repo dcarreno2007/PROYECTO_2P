@@ -85,5 +85,23 @@ public class GestorPuntaje {
         GestorArchivos gestorArchivos = new GestorArchivos();
         gestorArchivos.guardarParticipantes(participantes);
     }
+    /**
+     * Construye un mapa que asocia el id de cada partido con su resultado
+     * oficial, para permitir una busqueda eficiente durante el calculo de
+     * puntajes.
+     *
+     * @param resultados lista de resultados oficiales
+     * @return mapa de {@code idPartido} a {@link Resultado}
+     */
+    private Map<Integer, Resultado> indexarResultadosPorPartido(List<Resultado> resultados) {
+        Map<Integer, Resultado> mapa = new HashMap<>();
+
+        for (Resultado resultado : resultados) {
+            mapa.put(resultado.getIdPartido(), resultado);
+        }
+
+        return mapa;
+    }
+
 
 }
