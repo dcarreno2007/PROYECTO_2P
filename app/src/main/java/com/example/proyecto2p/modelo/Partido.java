@@ -1,6 +1,7 @@
 package com.example.proyecto2p.modelo;
 
 public class Partido {
+
     private int idPartido;
     private String fecha;
     private String hora;
@@ -10,7 +11,9 @@ public class Partido {
     private FaseTorneo fase;
     private EstadoPartido estado;
 
-
+    /***
+     * Constructor de la clase Partido
+     */
     public Partido(int idPartido, String fecha, String hora,
                    String estadio, String seleccion1,
                    String seleccion2, FaseTorneo fase,
@@ -24,6 +27,10 @@ public class Partido {
         this.fase = fase;
         this.estado = estado;
     }
+
+    /***
+     * Getters y Setters de los atributos de la clase Partido
+     */
 
     public int getIdPartido() {
         return idPartido;
@@ -90,6 +97,13 @@ public class Partido {
     }
 
 
+    /***
+     * Devuelve una representación en texto del partido,
+     * incluyendo todos sus atributos. Útil para depuración
+     * y para mostrar información rápida en consola.
+     *
+     * @return cadena con los datos del partido.
+     */
     @Override
     public String toString() {
         return "Partido{" +
@@ -104,26 +118,59 @@ public class Partido {
                 '}';
     }
 
+    /***
+     * Cierra la ventana de pronósticos para este partido.
+     * Cambia el estado del partido a CERRADO, impidiendo que los
+     * participantes sigan registrando o modificando predicciones
+     */
     public void cerrarPronosticos() {
         this.estado = EstadoPartido.CERRADO;
     }
 
+    /***
+     * Marca el partido como finalizado una vez que ya se jugó
+     * y se conoce el resultado real. Cambia el estado a FINALIZADO.
+     */
     public void finalizarPartido() {
         this.estado = EstadoPartido.FINALIZADO;
     }
 
+    /***
+     * Indica si actualmente se pueden registrar pronósticos
+     * para este partido.
+     *
+     * @return true si el partido está en estado ABIERTO, false en caso contrario.
+     */
     public boolean permitePronosticos() {
         return estaAbierto();
     }
 
+    /***
+     * Verifica si el partido se encuentra en estado ABIERTO,
+     * es decir, si aún no ha comenzado y acepta pronósticos.
+     *
+     * @return true si el estado actual es ABIERTO.
+     */
     public boolean estaAbierto() {
         return this.estado == EstadoPartido.ABIERTO;
     }
 
+    /***
+     * Verifica si el partido se encuentra en estado CERRADO,
+     * es decir, ya no acepta nuevos pronósticos, pero aún no finaliza.
+     *
+     * @return true si el estado actual es CERRADO.
+     */
     public boolean estaCerrado() {
         return this.estado == EstadoPartido.CERRADO;
     }
 
+    /***
+     * Verifica si el partido se encuentra en estado FINALIZADO,
+     * es decir, ya se jugó y se conoce el resultado.
+     *
+     * @return true si el estado actual es FINALIZADO.
+     */
     public boolean estaFinalizado() {
         return this.estado == EstadoPartido.FINALIZADO;
     }
