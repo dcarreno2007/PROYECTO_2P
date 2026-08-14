@@ -1,6 +1,7 @@
 package com.example.proyecto2p.util;
 import com.example.proyecto2p.datos.GestorArchivos;
 import com.example.proyecto2p.modelo.Participante;
+import java.util.List;
 import com.example.proyecto2p.modelo.Pronostico;
 import com.example.proyecto2p.modelo.Resultado;
 
@@ -20,7 +21,7 @@ public class GestorPuntaje {
     /***
      * Reinicia a cero el puntaje acumulado de todos los participantes.
      *
-     * <p>Debe invocarse antes de {@link #actualizarPuntajes(List, List, List)}
+     * <p>Debe invocarse antes de
      * para evitar que los puntajes se dupliquen si la opcion "Actualizar
      * puntajes" se ejecuta mas de una vez.</p>
      *

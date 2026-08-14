@@ -1,7 +1,5 @@
 package com.example.proyecto2p.modelo;
 
-package com.example.proyecto2p.modelo;
-
 /***
  * Representa el pronostico que un participante realiza sobre el resultado
  * de un partido especifico del torneo.
