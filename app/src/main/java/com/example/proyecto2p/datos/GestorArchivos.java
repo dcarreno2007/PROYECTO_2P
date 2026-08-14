@@ -235,8 +235,8 @@ public class GestorArchivos {
 
                 String[] datos = linea.split("\\|");
 
-                int idResultado = Integer.parseInt(datos[0]);
-                int idPartido = Integer.parseInt(datos[1]);
+                String idResultado = datos[0];
+                String idPartido = datos[1];
                 int golesSeleccion1 = Integer.parseInt(datos[2]);
                 int golesSeleccion2 = Integer.parseInt(datos[3]);
 
@@ -276,7 +276,7 @@ public class GestorArchivos {
      *
      * Filtra solo los pronósticos del usuario y fase indicados.
      */
-    public List<Pronostico> cargarPronosticos(int idUsuario, FaseTorneo fase) {
+    public List<Pronostico> cargarPronosticos(String idUsuario, FaseTorneo fase) {
         List<Pronostico> lista = new ArrayList<>();
 
         try (InputStream is = context.getAssets().open("pronosticos.txt");
@@ -293,14 +293,14 @@ public class GestorArchivos {
 
                 String[] datos = linea.split("\\|");
 
-                int idPronostico = Integer.parseInt(datos[0]);
-                int idUsuarioLinea = Integer.parseInt(datos[1]);
-                int idPartido = Integer.parseInt(datos[2]);
+                String idPronostico = datos[0];
+                String idUsuarioLinea = datos[1];
+                String idPartido = datos[2];
                 int golesSeleccion1 = Integer.parseInt(datos[3]);
                 int golesSeleccion2 = Integer.parseInt(datos[4]);
                 int puntosObtenidos = Integer.parseInt(datos[5]);
 
-                if (idUsuarioLinea == idUsuario) {
+                if (idUsuarioLinea.equals(idUsuario)) {
                     Pronostico pr = new Pronostico(idPronostico, idUsuarioLinea, idPartido, golesSeleccion1, golesSeleccion2);
                     pr.setPuntosObtenidos(puntosObtenidos);
                     lista.add(pr);
