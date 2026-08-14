@@ -108,7 +108,7 @@ public class GestorArchivos {
         }
     }
 
-    // ================= ADMINISTRADORES =================
+    // ================= Administradores =================
 
     /**
      * Formato esperado de administradores.txt:
