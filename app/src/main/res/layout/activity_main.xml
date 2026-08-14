@@ -38,8 +38,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="352dp"
-            android:layout_height="226dp"
+            android:layout_width="349dp"
+            android:layout_height="230dp"
             android:layout_marginTop="20dp"
             android:cropToPadding="false"
             android:importantForAccessibility="no"
@@ -101,6 +101,7 @@
             android:backgroundTint="#0A2351"
             android:onClick="iniciarSesion"
             android:text="INICIAR SESIÓN"
+            android:textColorLink="#FFFFFF"
             app:cornerRadius="50dp" />
 
     </LinearLayout>
