@@ -12,9 +12,9 @@ import java.io.Serializable;
  * los puntos obtenidos por cada participante.</p>
  */
 
-public class Resultado {
-    private int idResultado;
-    private int idPartido;
+public class Resultado implements Serializable{
+    private String idResultado;
+    private String idPartido;
     private int golesSeleccion1;
     private int golesSeleccion2;
 
@@ -26,18 +26,18 @@ public class Resultado {
      * @param golesSeleccion1 goles anotados por la seleccion 1
      * @param golesSeleccion2 goles anotados por la seleccion 2
      */
-    public Resultado(int idResultado, int idPartido, int golesSeleccion1, int golesSeleccion2) {
+    public Resultado(String idResultado, String idPartido, int golesSeleccion1, int golesSeleccion2) {
         this.idResultado = idResultado;
         this.idPartido = idPartido;
         this.golesSeleccion1 = golesSeleccion1;
         this.golesSeleccion2 = golesSeleccion2;
     }
 
-    public int getIdResultado() {
+    public String getIdResultado() {
         return idResultado;
     }
 
-    public int getIdPartido() {
+    public String getIdPartido() {
         return idPartido;
     }
     /***

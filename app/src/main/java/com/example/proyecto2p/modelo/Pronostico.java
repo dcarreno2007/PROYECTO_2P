@@ -1,19 +1,19 @@
 package com.example.proyecto2p.modelo;
 
 /***
- * Representa el pronostico que un participante realiza sobre el resultado
- * de un partido especifico del torneo.
+ * Representa el pronóstico que un participante realiza sobre el resultado
+ * de un partido específico del torneo.
  */
 public class Pronostico {
 
-    private int idPronostico;
-    private int idUsuario;
-    private int idPartido;
+    private String idPronostico;
+    private String idUsuario;
+    private String idPartido;
     private int golesSeleccion1;
     private int golesSeleccion2;
     private int puntosObtenidos;
 
-    public Pronostico(int idPronostico, int idUsuario, int idPartido,
+    public Pronostico(String idPronostico, String idUsuario, String idPartido,
                       int golesSeleccion1, int golesSeleccion2) {
         this.idPronostico = idPronostico;
         this.idUsuario = idUsuario;
@@ -23,15 +23,15 @@ public class Pronostico {
         this.puntosObtenidos = 0;
     }
 
-    public int getIdPronostico() {
+    public String getIdPronostico() {
         return idPronostico;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public int getIdPartido() {
+    public String getIdPartido() {
         return idPartido;
     }
 
@@ -66,8 +66,7 @@ public class Pronostico {
      * @return los puntos obtenidos por este pronóstico
      */
     public int calcularPuntos(Resultado resultadoOficial) {
-        if (resultadoOficial == null || resultadoOficial.getIdPartido() != this.idPartido) {
-            this.puntosObtenidos = 0;
+        if (resultadoOficial == null || !resultadoOficial.getIdPartido().equals(this.idPartido)) {            this.puntosObtenidos = 0;
             return this.puntosObtenidos;
         }
 
