@@ -113,10 +113,15 @@ public class Pronostico {
     }
 
     /***
-     * Determina la tendencia del resultado: victoria de seleccion1,
-     * victoria de seleccion2, o empate.
+     * Determina el ganador según los goles: seleccion1, seleccion2, o empate.
+     * Se usa como apoyo dentro de {@link #calcularPuntos(Resultado)}.
+     *
+     * @param goles1 goles de la seleccion 1
+     * @param goles2 goles de la seleccion 2
+     * @return {@code "GANA_1"} si gana la seleccion 1, {@code "GANA_2"} si gana
+     *         la seleccion 2, o {@code "EMPATE"} si el marcador es igual
      */
-    private String obtenerTendencia(int goles1, int goles2) {
+    private String obtenerGanador(int goles1, int goles2) {
         if (goles1 > goles2) {
             return "GANA_1";
         } else if (goles2 > goles1) {
