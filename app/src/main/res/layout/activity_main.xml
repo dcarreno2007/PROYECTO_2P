@@ -5,23 +5,105 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+
+    <ImageView
+        android:id="@+id/label_end"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/estadio" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="botonpequeño"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="229dp" />
+    <LinearLayout
+        android:id="@+id/idcontent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        android:padding="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="363dp"
+            android:layout_height="229dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:importantForAccessibility="no"
+            app:srcCompat="@drawable/copa" />
+
+        <TextView
+            android:id="@+id/label_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="Usuario"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/editText_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_input"
+            android:drawableStart="@drawable/ic_usuario"
+            android:drawablePadding="10dp"
+            android:drawableTint="#757575"
+            android:ems="10"
+            android:hint="Ingrese su usuario"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/label_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Contraseña"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_input"
+            android:drawableStart="@drawable/ic_candado"
+            android:drawableEnd="@drawable/ic_ojo"
+            android:drawablePadding="10dp"
+            android:drawableTint="#757575"
+            android:ems="10"
+            android:hint="Ingrese su contraseña"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btn_iniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#0A2351"
+            android:textColor="@android:color/white"
+            android:onClick="iniciarSesion"
+            android:text="INICIAR SESIÓN"
+            app:cornerRadius="50dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

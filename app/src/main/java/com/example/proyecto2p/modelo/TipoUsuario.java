@@ -1,5 +1,5 @@
 package com.example.proyecto2p.modelo;
 
-public enum tipoUsuario {
+public enum TipoUsuario {
     PARTICIPANTE, ADMINISTRADOR
 }

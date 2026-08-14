@@ -1,24 +1,26 @@
 package com.example.proyecto2p.modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String idUsuario;
     private String nombreUsuario;
     private String contrasena;
     private String nombreCompleto;
-    private tipoUsuario tipoUsuario;
+    private TipoUsuario tipoUsuario;
 
-    public Usuario(String idUsuario,String nombreUsuario, String contrasena, String nombreCompleto, tipoUsuario tipoUsuario ){
+    public Usuario(String idUsuario,String nombreUsuario, String contrasena, String nombreCompleto, TipoUsuario TipoUsuario ){
         this.idUsuario=idUsuario;
         this.nombreUsuario=nombreUsuario;
         this.contrasena=contrasena;
         this.nombreCompleto=nombreCompleto;
-        this.tipoUsuario=tipoUsuario;
+        this.tipoUsuario=TipoUsuario;
     }
 
-    public tipoUsuario getTipoUsuario() {
+    public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
-    public void setTipoUsuario(tipoUsuario tipoUsuario) {
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
     public String getNombreCompleto() {
