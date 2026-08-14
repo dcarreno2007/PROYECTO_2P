@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/label_top"
+        android:id="@+id/label_end"
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
@@ -38,10 +38,10 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="349dp"
-            android:layout_height="230dp"
+            android:layout_width="363dp"
+            android:layout_height="229dp"
             android:layout_marginTop="20dp"
-            android:cropToPadding="false"
+            android:layout_gravity="center_horizontal"
             android:importantForAccessibility="no"
             app:srcCompat="@drawable/copa" />
 
@@ -99,9 +99,9 @@
             android:layout_height="52dp"
             android:layout_marginTop="40dp"
             android:backgroundTint="#0A2351"
+            android:textColor="@android:color/white"
             android:onClick="iniciarSesion"
             android:text="INICIAR SESIÓN"
-            android:textColorLink="#FFFFFF"
             app:cornerRadius="50dp" />
 
     </LinearLayout>
