@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import com.example.proyecto2p.modelo.Pronostico;
 import com.example.proyecto2p.modelo.Resultado;
+import android.content.Context;
 
 /***
  * Gestiona el cálculo y la actualización de los puntajes acumulados de los
@@ -52,8 +53,8 @@ public class GestorPuntaje {
          return;
      }
 
-     Map<Integer, Resultado> resultadosPorPartido = indexarResultadosPorPartido(resultados);
-     Map<Integer, Participante> participantesPorId = indexarParticipantesPorId(participantes);
+     Map<String, Resultado> resultadosPorPartido = indexarResultadosPorPartido(resultados);
+     Map<String, Participante> participantesPorId = indexarParticipantesPorId(participantes);
 
      for (Pronostico pronostico : pronosticos) {
          Resultado resultadoOficial = resultadosPorPartido.get(pronostico.getIdPartido());
@@ -77,14 +78,15 @@ public class GestorPuntaje {
      *
      * @param participantes lista de participantes con los puntajes ya actualizados
      */
-    public void guardarPuntajes(List<Participante> participantes) {
+    public void guardarPuntajes(List<Participante> participantes, Context context) {
         if (participantes == null) {
             return;
         }
 
-        GestorArchivos gestorArchivos = new GestorArchivos();
+        GestorArchivos gestorArchivos = new GestorArchivos(context);
         gestorArchivos.guardarParticipantes(participantes);
     }
+
     /**
      * Construye un mapa que asocia el id de cada partido con su resultado
      * oficial, para permitir una busqueda eficiente durante el calculo de
@@ -93,13 +95,18 @@ public class GestorPuntaje {
      * @param resultados lista de resultados oficiales
      * @return mapa de {@code idPartido} a {@link Resultado}
      */
-    private Map<Integer, Resultado> indexarResultadosPorPartido(List<Resultado> resultados) {
-        Map<Integer, Resultado> mapa = new HashMap<>();
-
+    private Map<String, Resultado> indexarResultadosPorPartido(List<Resultado> resultados) {
+        Map<String, Resultado> mapa = new HashMap<>();
         for (Resultado resultado : resultados) {
             mapa.put(resultado.getIdPartido(), resultado);
         }
-
+        return mapa;
+    }
+    private Map<String, Participante> indexarParticipantesPorId(List<Participante> participantes) {
+        Map<String, Participante> mapa = new HashMap<>();
+        for (Participante participante : participantes) {
+            mapa.put(participante.getIdUsuario(), participante);
+        }
         return mapa;
     }
 

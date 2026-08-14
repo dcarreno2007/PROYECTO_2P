@@ -6,14 +6,14 @@ package com.example.proyecto2p.modelo;
  */
 public class Pronostico {
 
-    private int idPronostico;
-    private int idUsuario;
-    private int idPartido;
+    private String idPronostico;
+    private String idUsuario;
+    private String idPartido;
     private int golesSeleccion1;
     private int golesSeleccion2;
     private int puntosObtenidos;
 
-    public Pronostico(int idPronostico, int idUsuario, int idPartido,
+    public Pronostico(String idPronostico, String idUsuario, String idPartido,
                       int golesSeleccion1, int golesSeleccion2) {
         this.idPronostico = idPronostico;
         this.idUsuario = idUsuario;
@@ -23,15 +23,15 @@ public class Pronostico {
         this.puntosObtenidos = 0;
     }
 
-    public int getIdPronostico() {
+    public String getIdPronostico() {
         return idPronostico;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public int getIdPartido() {
+    public String getIdPartido() {
         return idPartido;
     }
 
@@ -66,7 +66,9 @@ public class Pronostico {
      * @return los puntos obtenidos por este pronóstico
      */
     public int calcularPuntos(Resultado resultadoOficial) {
-        if (resultadoOficial == null || resultadoOficial.getIdPartido() != this.idPartido) {
+        if (resultadoOficial == null
+                || resultadoOficial.getIdPartido() == null
+                || !resultadoOficial.getIdPartido().equals(this.idPartido)) {
             this.puntosObtenidos = 0;
             return this.puntosObtenidos;
         }
@@ -74,7 +76,8 @@ public class Pronostico {
         int golesRealesSeleccion1 = resultadoOficial.getGolesSeleccion1();
         int golesRealesSeleccion2 = resultadoOficial.getGolesSeleccion2();
 
-        boolean marcadorExacto = (this.golesSeleccion1 == golesRealesSeleccion1) && (this.golesSeleccion2 == golesRealesSeleccion2);
+        boolean marcadorExacto = (this.golesSeleccion1 == golesRealesSeleccion1)
+                && (this.golesSeleccion2 == golesRealesSeleccion2);
 
         if (marcadorExacto) {
             this.puntosObtenidos = 3;
