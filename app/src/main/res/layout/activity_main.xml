@@ -100,7 +100,6 @@
             android:layout_marginTop="40dp"
             android:backgroundTint="#0A2351"
             android:textColor="@android:color/white"
-            android:onClick="iniciarSesion"
             android:text="INICIAR SESIÓN"
             app:cornerRadius="50dp" />
 

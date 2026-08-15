@@ -1,12 +1,15 @@
 package com.example.proyecto2p;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.proyecto2p.modelo.Usuario;
 
 public class MenuParticipanteActivity extends AppCompatActivity {
 
@@ -20,5 +23,16 @@ public class MenuParticipanteActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // 1. Enlazamos el ID del nombre de usuario que pusiste en el diseño
+        TextView tvNombre = findViewById(R.id.tvNombreUsuario);
+
+        // 2. Recibimos el objeto Usuario enviado desde MainActivity
+        Usuario usuarioActivo = (Usuario) getIntent().getSerializableExtra("usuarioActivo");
+
+        // 3. Verificamos que no sea nulo y cambiamos el texto por el nombre real
+        if (usuarioActivo != null) {
+            tvNombre.setText(usuarioActivo.getNombreCompleto());
+        }
     }
 }

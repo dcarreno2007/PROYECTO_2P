@@ -7,4 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".MenuParticipanteActivity">
 
+    <ImageView
+        android:id="@+id/label_fondo"
+        android:layout_width="0dp"
+        android:layout_height="275dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usuario" />
+
+    <ImageView
+        android:id="@+id/label_ondas"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ondas" />
+
+    <ImageView
+        android:id="@+id/icn_usuario"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_persona"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/label_bienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido,"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/icn_usuario"
+        app:layout_constraintTop_toTopOf="@+id/icn_usuario" />
+
+    <TextView
+        android:id="@+id/tvNombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/label_bienvenido"
+        app:layout_constraintTop_toBottomOf="@+id/label_bienvenido" />
+
+    <TextView
+        android:id="@+id/label_participante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participante"
+        android:textColor="#4CAF50"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/icn_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario" />
+
+    <!-- Botón Tabla -->
+
+    <!-- Botón Pronósticos -->
+
+    <!-- Botón Mis Pronósticos -->
+
+    <!-- Botón Salir -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
