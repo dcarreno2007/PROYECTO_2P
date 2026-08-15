@@ -16,11 +16,14 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -351,6 +354,120 @@ public class GestorArchivos {
                         r.getGolesSeleccion1() + ";" +
                         r.getGolesSeleccion2() + "\n");
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // ==========================================================
+    // PRONÓSTICOS (serialización de objetos)
+    // ==========================================================
+
+    /**
+     * Prefijo común de los archivos donde se serializan los pronósticos
+     * de cada participante, según el formato pedido en el enunciado:
+     * {@code pronostico_idUsuario_fase.dat}.
+     */
+    private static final String PREFIJO_ARCHIVO_PRONOSTICO = "pronostico_";
+
+    /**
+     * Construye el nombre del archivo donde se serializan los pronósticos
+     * de un participante para una fase específica del torneo.
+     *
+     * @param idUsuario id del participante dueño de los pronósticos.
+     * @param fase      fase del torneo a la que pertenecen los pronósticos.
+     * @return nombre de archivo con el formato {@code pronostico_idUsuario_fase.dat}.
+     */
+    private String nombreArchivoPronosticos(String idUsuario, FaseTorneo fase) {
+        return PREFIJO_ARCHIVO_PRONOSTICO + idUsuario + "_" + fase.name() + ".dat";
+    }
+
+    /**
+     * Carga, mediante deserialización de objetos, todos los pronósticos que
+     * un participante ha registrado para una fase específica del torneo.
+     *
+     * <p>Si el participante todavía no ha registrado ningún pronóstico para
+     * esa fase, el archivo aún no existe y se retorna una lista vacía en
+     * lugar de lanzar un error.</p>
+     *
+     * @param idUsuario id del participante cuyos pronósticos se desean consultar.
+     * @param fase      fase del torneo a consultar.
+     * @return lista de objetos {@link Pronostico} registrados por ese usuario en esa fase.
+     */
+    @SuppressWarnings("unchecked")
+    public List<Pronostico> cargarPronosticos(String idUsuario, FaseTorneo fase) {
+        List<Pronostico> lista = new ArrayList<>();
+        String nombreArchivo = nombreArchivoPronosticos(idUsuario, fase);
+
+        try (FileInputStream fis = context.openFileInput(nombreArchivo);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+
+            Object objeto = ois.readObject();
+            if (objeto instanceof List<?>) {
+                lista = (List<Pronostico>) objeto;
+            }
+
+        } catch (FileNotFoundException e) {
+            // Aún no existen pronósticos guardados para este usuario y fase: se retorna lista vacía.
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+    /**
+     * Carga todos los pronósticos registrados por un participante,
+     * recorriendo las siete fases del torneo y combinando los resultados
+     * en una sola lista. Se utiliza principalmente en la pantalla
+     * "Mis pronósticos".
+     *
+     * @param idUsuario id del participante cuyos pronósticos se desean consultar.
+     * @return lista combinada de todos los pronósticos del participante, en cualquier fase.
+     */
+    public List<Pronostico> cargarTodosPronosticos(String idUsuario) {
+        List<Pronostico> todos = new ArrayList<>();
+        for (FaseTorneo fase : FaseTorneo.values()) {
+            todos.addAll(cargarPronosticos(idUsuario, fase));
+        }
+        return todos;
+    }
+
+    /**
+     * Guarda (o reemplaza) el pronóstico de un participante para un partido
+     * específico, serializando la lista completa de pronósticos de esa fase.
+     *
+     * <p>Si el participante ya tenía un pronóstico registrado para el mismo
+     * partido, este se reemplaza en lugar de duplicarse, tal como exige el
+     * enunciado.</p>
+     *
+     * @param pronostico pronóstico a guardar; su {@code idUsuario} e {@code idPartido}
+     *                   determinan a quién pertenece y a qué partido corresponde.
+     * @param fase       fase del torneo a la que pertenece el partido pronosticado.
+     */
+    public void guardarPronostico(Pronostico pronostico, FaseTorneo fase) {
+        if (pronostico == null) {
+            return;
+        }
+
+        List<Pronostico> lista = cargarPronosticos(pronostico.getIdUsuario(), fase);
+
+        // Si ya existe un pronóstico para este mismo partido, se reemplaza.
+        List<Pronostico> listaFiltrada = new ArrayList<>();
+        for (Pronostico p : lista) {
+            if (!p.getIdPartido().equals(pronostico.getIdPartido())) {
+                listaFiltrada.add(p);
+            }
+        }
+        listaFiltrada.add(pronostico);
+
+        String nombreArchivo = nombreArchivoPronosticos(pronostico.getIdUsuario(), fase);
+
+        try (FileOutputStream fos = context.openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+
+            oos.writeObject(listaFiltrada);
 
         } catch (IOException e) {
             e.printStackTrace();
