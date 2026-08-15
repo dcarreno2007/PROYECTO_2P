@@ -1,8 +1,8 @@
 package com.example.proyecto2p;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,40 +63,31 @@ public class MenuParticipanteActivity extends AppCompatActivity {
     /**
      * Asocia el listener de clic a cada una de las opciones del menú del
      * participante: Tabla de posiciones, Pronósticos, Mis pronósticos y
-     * Salir.
-     *
-     * <p>Las opciones que todavía no tienen una pantalla asociada (partes
-     * 3, 4 y 5 del proyecto) muestran un mensaje temporal mediante
-     * {@link Toast#makeText}; cuando se construya cada actividad, basta con
-     * reemplazar ese Toast por el {@code Intent} correspondiente (ya
-     * dejado comentado como referencia).</p>
+     * Salir. Las primeras tres abren su actividad correspondiente
+     * enviándole el usuario autenticado mediante el extra
+     * {@code "usuarioActivo"}.
      */
     private void configurarOpcionesMenu() {
 
-        // Tabla de posiciones (se conecta en la parte 3)
+        // Tabla de posiciones (parte 3)
         findViewById(R.id.btnTablaPosiciones).setOnClickListener(v -> {
-            Toast.makeText(this, "Próximamente: Tabla de posiciones", Toast.LENGTH_SHORT).show();
-            // TODO parte 3:
-            // Intent intent = new Intent(this, TablaPosicionesActivity.class);
-            // startActivity(intent);
+            Intent intent = new Intent(this, TablaPosicionesActivity.class);
+            intent.putExtra("usuarioActivo", usuarioActivo);
+            startActivity(intent);
         });
 
-        // Pronósticos (se conecta en la parte 4)
+        // Pronósticos (parte 4)
         findViewById(R.id.btnPronosticos).setOnClickListener(v -> {
-            Toast.makeText(this, "Próximamente: Pronósticos", Toast.LENGTH_SHORT).show();
-            // TODO parte 4:
-            // Intent intent = new Intent(this, PronosticosActivity.class);
-            // intent.putExtra("usuarioActivo", usuarioActivo);
-            // startActivity(intent);
+            Intent intent = new Intent(this, PronosticosActivity.class);
+            intent.putExtra("usuarioActivo", usuarioActivo);
+            startActivity(intent);
         });
 
-        // Mis pronósticos (se conecta en la parte 5)
+        // Mis pronósticos (parte 5)
         findViewById(R.id.btnMisPronosticos).setOnClickListener(v -> {
-            Toast.makeText(this, "Próximamente: Mis pronósticos", Toast.LENGTH_SHORT).show();
-            // TODO parte 5:
-            // Intent intent = new Intent(this, MisPronosticosActivity.class);
-            // intent.putExtra("usuarioActivo", usuarioActivo);
-            // startActivity(intent);
+            Intent intent = new Intent(this, MisPronosticosActivity.class);
+            intent.putExtra("usuarioActivo", usuarioActivo);
+            startActivity(intent);
         });
 
         // Salir: termina la aplicación por completo, como pide el enunciado

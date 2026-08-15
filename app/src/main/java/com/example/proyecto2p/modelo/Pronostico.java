@@ -1,10 +1,19 @@
 package com.example.proyecto2p.modelo;
 
+import java.io.Serializable;
+
 /***
  * Representa el pronóstico que un participante realiza sobre el resultado
  * de un partido específico del torneo.
+ *
+ * <p>Implementa {@link Serializable} porque, según el enunciado, los
+ * pronósticos de cada participante se almacenan mediante serialización de
+ * objetos en archivos con el formato {@code pronostico_idUsuario_fase.dat}
+ * (ver {@link com.example.proyecto2p.datos.GestorArchivos}).</p>
  */
-public class Pronostico {
+public class Pronostico implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String idPronostico;
     private String idUsuario;
