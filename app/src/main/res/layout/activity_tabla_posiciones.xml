@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".TablaPosicionesActivity">
+
+    <!-- =========================
+         ENCABEZADO
+         ========================= -->
+
+    <ImageView
+        android:id="@+id/label_fondo"
+        android:layout_width="0dp"
+        android:layout_height="225dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usuario" />
+
+    <ImageView
+        android:id="@+id/label_ondas"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ondas" />
+
+    <ImageView
+        android:id="@+id/icn_usuario"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_persona"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/label_bienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido/a,"
+        android:textColor="#E0E0E0"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/icn_usuario"
+        app:layout_constraintTop_toTopOf="@+id/icn_usuario" />
+
+    <TextView
+        android:id="@+id/tvNombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="6dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/label_bienvenido"
+        app:layout_constraintTop_toBottomOf="@+id/label_bienvenido" />
+
+    <TextView
+        android:id="@+id/label_participante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participante"
+        android:textColor="#4CAF50"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toEndOf="@+id/icn_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario" />
+
+
+    <!-- =========================
+         TÍTULO
+         ========================= -->
+
+    <LinearLayout
+        android:id="@+id/contenedorTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="0dp"
+        android:translationY="-15dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/label_fondo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:translationX="-5dp"
+                android:translationY="4dp"
+                android:src="@drawable/ic_trofeo"
+                app:tint="#082B5B" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Tabla de posiciones"
+                android:textColor="#082B5B"
+                android:textSize="21sp"
+                android:translationX="-9dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:translationY="-2dp"
+            android:text="Así van los participantes del Mundial 2026"
+            android:textColor="#082B5B"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+    <!-- =========================
+         TABLA
+         ========================= -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTabla"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="90dp"
+        android:translationY="-16dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="#EEEEEE"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/contenedorTitulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- CABECERA DE TABLA -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="#082B5B"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pos."
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Participante"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="Puntos"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!-- AQUÍ SE AGREGARÁN LOS PARTICIPANTES -->
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/contenedorParticipantes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- =========================
+         VOLVER
+         ========================= -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVolver"
+        android:layout_width="135dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="50dp"
+        android:text="←   Volver"
+        android:textAllCaps="false"
+        android:textColor="#082B5B"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:strokeColor="#082B5B"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
