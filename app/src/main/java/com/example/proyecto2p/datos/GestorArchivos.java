@@ -40,7 +40,7 @@ public class GestorArchivos {
      * Constructor de la clase GestorArchivos.
      * Al instanciar, verifica y copia los archivos modificables (participantes.txt,
      * partidos.txt y resultados.txt) desde la carpeta assets hacia el almacenamiento interno
-     * para permitir su posterior escritura y actualización[cite: 7].
+     * para permitir su posterior escritura y actualización.
      *
      * @param context Contexto de la aplicación necesario para acceder a los recursos del sistema.
      */
@@ -53,7 +53,7 @@ public class GestorArchivos {
 
     /**
      * Copia un archivo desde la carpeta assets al almacenamiento interno privado de la aplicación
-     * si este aún no existe en dicho directorio, preparando el entorno para archivos de salida[cite: 7].
+     * si este aún no existe en dicho directorio, preparando el entorno para archivos de salida.
      *
      * @param nombreArchivo Nombre del archivo de texto con su extensión (ej. "partidos.txt").
      */
@@ -77,8 +77,8 @@ public class GestorArchivos {
     /**
      * Carga todos los usuarios del sistema leyendo el archivo principal usuarios.txt desde assets
      * (de solo lectura) y combinándolo con los datos específicos de participantes.txt y
-     * administradores.txt[cite: 4, 7].
-     * Utiliza el punto y coma (;) como separador y valida que existan al menos 5 datos por línea para evitar excepciones[cite: 4].
+     * administradores.txt.
+     * Utiliza el punto y coma (;) como separador y valida que existan al menos 5 datos por línea para evitar excepciones.
      *
      * @return Lista polimórfica de objetos de tipo Usuario (Participantes y Administradores).
      */
@@ -131,8 +131,8 @@ public class GestorArchivos {
 
     /**
      * Lee los puntajes de los participantes desde el almacenamiento interno, ya que
-     * este archivo se modifica constantemente durante la ejecución del torneo[cite: 7].
-     * Emplea el separador original de punto y coma[cite: 8].
+     * este archivo se modifica constantemente durante la ejecución del torneo.
+     * Emplea el separador original de punto y coma.
      *
      * @return Mapa que asocia el ID del participante con su respectivo puntaje acumulado.
      */
@@ -165,7 +165,7 @@ public class GestorArchivos {
 
     /**
      * Lee los cargos asignados a los administradores desde el archivo estático en assets,
-     * ya que esta información no se modifica por la aplicación[cite: 5, 7].
+     * ya que esta información no se modifica por la aplicación.
      *
      * @return Mapa que asocia el ID del administrador con su cargo asignado.
      */
@@ -198,7 +198,7 @@ public class GestorArchivos {
 
     /**
      * Persiste la lista actualizada de participantes en el almacenamiento interno de la app.
-     * Mantiene intacta la cabecera original del archivo y separa los datos mediante punto y coma[cite: 8].
+     * Mantiene intacta la cabecera original del archivo y separa los datos mediante punto y coma.
      *
      * @param participantes Lista de objetos Participante cuyos puntajes han sido recalculados.
      */
@@ -218,8 +218,8 @@ public class GestorArchivos {
     }
 
     /**
-     * Carga la información del fixture de partidos leyendo desde el almacenamiento interno privado[cite: 7].
-     * Instancia objetos de la clase Partido interpretando el estado y la fase del torneo[cite: 2].
+     * Carga la información del fixture de partidos leyendo desde el almacenamiento interno privado.
+     * Instancia objetos de la clase Partido interpretando el estado y la fase del torneo.
      *
      * @return Lista completa de objetos Partido registrados en el sistema.
      */
@@ -265,7 +265,7 @@ public class GestorArchivos {
 
     /**
      * Actualiza y sobrescribe el archivo de partidos en el almacenamiento interno para reflejar
-     * cambios en sus estados (ABIERTO, CERRADO, FINALIZADO)[cite: 2].
+     * cambios en sus estados (ABIERTO, CERRADO, FINALIZADO).
      *
      * @param partidos Lista actualizada de objetos Partido.
      */
@@ -293,7 +293,7 @@ public class GestorArchivos {
 
     /**
      * Consulta los resultados oficiales de los partidos que ya han finalizado desde
-     * el archivo alojado en el almacenamiento interno[cite: 3, 7].
+     * el archivo alojado en el almacenamiento interno.
      *
      * @return Lista de objetos Resultado conteniendo marcadores exactos.
      */
@@ -335,7 +335,7 @@ public class GestorArchivos {
 
     /**
      * Almacena de manera permanente los marcadores oficiales de los partidos finalizados.
-     * Consolida los datos en el almacenamiento interno bajo el formato original[cite: 3].
+     * Consolida los datos en el almacenamiento interno bajo el formato original.
      *
      * @param resultados Lista de marcadores que se grabarán en el archivo resultados.txt.
      */

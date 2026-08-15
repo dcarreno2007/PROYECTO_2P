@@ -22,8 +22,6 @@ import java.util.List;
  * Permite a los usuarios.txt autenticarse y los redirige a su menú correspondiente
  * dependiendo de si son Participantes o Administradores.
  *
- * @author Tu Nombre/Grupo
- * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -43,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Enlazamos con los IDs exactos de tu diseño XML
+
         etUsuario = findViewById(R.id.editText_usuario);
         etContrasena = findViewById(R.id.editText_contrasenia);
         btnIniciarSesion = findViewById(R.id.btn_iniciarSesion);
 
-        // Lógica para mostrar/ocultar contraseña con el "ojito"
+
         etContrasena.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Acción del botón de iniciar sesión
+
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
-            // Buscamos al usuario en la base de datos usando el GestorArchivos
+
             Usuario usuarioAutenticado = validarCredenciales(usuarioIngresado, contrasenaIngresada);
 
-            // Si lo encuentra, evalúa el tipo de usuario y lo envía a su menú correspondiente[cite: 1]
+
             if (usuarioAutenticado.getTipoUsuario() == TipoUsuario.PARTICIPANTE) {
                 Intent intent = new Intent(MainActivity.this, MenuParticipanteActivity.class);
                 intent.putExtra("usuarioActivo", usuarioAutenticado);
@@ -113,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-            finish(); // Destruye esta pantalla para que no puedan volver con la flecha atrás
+            finish();
 
         } catch (CredencialesInvalidasException e) {
-            // Muestra el mensaje de la excepción verificada mediante Toast[cite: 1]
+
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
